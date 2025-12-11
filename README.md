@@ -1,97 +1,38 @@
-README.md — GhostRouter
-# 🕸️ GhostRouter
-### **Telemetry-Driven LLM Meta-Router with Real-Time Entropy Slope Tracking, Token Replay Engine & Hybrid Routing**
-*A new class of AI infrastructure where routing decisions are made by token-level signals — not heuristics.*
-
----
-
-## 🌑 What is GhostRouter?
-
-GhostRouter is an experimental **meta-router** that decides *which model should think next* — locally, in the cloud, or via a specialized route.
-
-It uses **live token metrics** to predict hallucinations *before they happen*, and switches models mid-thought while preserving reasoning continuity through the **Token Replay Engine**.
-
-GhostRouter does not guess.  
-GhostRouter observes → routes → learns → adapts.
-
----
-
-## 🟣 Why GhostRouter is a New Paradigm
-
-Most routers use static rules or task-based chaining.
-
-GhostRouter introduces **three innovations** not found in any existing framework:
-
----
-
-### 🟣 1. Real-Time Entropy Slope Routing (unique)
-
-GhostRouter reads:
-- token entropy  
-- entropy slope (Δentropy/t)  
-- draft acceptance rate  
-- local confidence  
-- latency & GPU load  
-
-This allows it to:
-**predict hallucination before it manifests**  
-→ and switch to a better model **mid-generation**.
-
-No other open-source router does this.
-
----
-
-### 🟣 2. Token Replay Engine (new concept)
-
-When switching from Local → Cloud or Cloud → Local:
-
-- GhostRouter replays the last N tokens  
-- rebuilds KV-cache  
-- preserves thought chain  
-- avoids context resets  
-
-This creates **true reasoning continuity**,  
-not just pipelining or chaining.
-
----
-
-### 🟣 3. Telemetry-First Architecture
-
-Routing is driven by data, not heuristics.
-
-GhostRouter logs:
-- entropy  
-- entropy slope  
-- draft acceptance  
-- route_switch events  
-- model latency  
-- GPU/RAM telemetry  
-- confidence signals  
-
-This powers the **Ghost Telemetry Dashboard** (W&B/Grafana).
-
----
+# GhostRouter 🛡️
 
 
+## What is GhostRouter?
+GhostRouter is an experimental meta-router for LLM inference.  
+It uses telemetry signals to predict hallucinations before they happen  
+and dynamically routes across local, cloud & specialized models.
 
-🔭 Roadmap
+*GhostRouter does not guess. GhostRouter observes → routes → learns → adapts.*
 
-RouteRL (reinforcement-trained routing brain)
+## Why GhostRouter is a New Paradigm
+1. **Real-Time Entropy Slope**
+   - Predicts hallucinations using token entropy signals.
+2. **Token Replay Engine**
+   - Preserves reasoning continuity on model switches.
+3. **Telemetry-First Architecture**
+   - Drives decisions with data, not heuristics.
 
-Token Replay Engine 
+## Telemetry Signals
+- Token entropy & slope
+- Draft acceptance rate
+- Latency
+- GPU/RAM
+- Confidence signals
 
-Dynamic KV-mode switching
+## Roadmap
+- RouteRL (reinforcement routing brain)
+- Token Replay Engine improvements
+- Dynamic KV-mode switching
+- Telemetry feedback loop
 
-Telemetry → model tuning feedback loop
-
-
-
-🦊 Authors
-
-Gary & Juulia — GPT-OSS.fi Labs
+## Authors
+**Gary & Juulia** — GPT-OSS.fi Labs  
 Part of the Never Ending Token Story 💜
 
-⚠️ Status
-
-Active research project. Highly experimental.
-Expect ghosts.
+## Status
+Active research project — highly experimental.
+Expect ghosts 👻
